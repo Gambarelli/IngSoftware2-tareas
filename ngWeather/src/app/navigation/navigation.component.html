@@ -5,8 +5,8 @@
       [opened]="!(isHandset$ | async)">
     <mat-toolbar>Angel y Alvaro</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/dashboard">Dashboard</a>
-      <a mat-list-item routerLink="/weatherTable">Table</a>
+      <a mat-list-item routerLink="/dashboard">Ver Clima</a>
+      <a mat-list-item routerLink="/weatherTable">Mas Opciones</a>
       <!-- <a mat-list-item href="#"></a> -->
     </mat-nav-list>
   </mat-sidenav>
@@ -20,7 +20,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>ngWeather</span>
+      <span>Weather Service - Ingeniería de Software 2</span>
     </mat-toolbar>
     <router-outlet>
       <!-- Aqui va el contenido -->

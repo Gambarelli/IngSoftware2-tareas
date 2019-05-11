@@ -1,5 +1,5 @@
 <mat-action-list>
-  <button *ngFor="let city of cities"  mat-list-item>
+  <button (click)="changeCity(city)" *ngFor="let city of cities"  mat-list-item>
     {{city.name}}
   </button>
 </mat-action-list>

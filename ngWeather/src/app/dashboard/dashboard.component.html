@@ -1,11 +1,11 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
+  <h1 class="mat-h1">Clima Actual</h1>
   <mat-grid-list cols="2" rowHeight="80vh">
     <mat-grid-tile >
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            City list
+            Selecciona una Ciudad
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
             </button>
@@ -17,7 +17,7 @@
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div>
-            <app-city-list></app-city-list>
+            <app-city-list (getData)="setData($event)"></app-city-list>
           </div>
         </mat-card-content>
       </mat-card>
@@ -26,7 +26,7 @@
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            City details
+            Detalles del Clima
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
             </button>
@@ -37,10 +37,15 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+          <ul class=list-info>
+            <li>Temperatura: {{weather == null ? '' : weather.main.temp - 273.15 |  number:'.2' }} °C</li>
+            <li>Humedad: {{weather == null ? '' : weather.main.humidity }} %</li>
+            <li>Temperatura Máxima: {{weather == null ? '' : weather.main.temp_max - 273.15 |  number:'.2' }} °C</li>
+            <li>Temperatura Mínima: {{weather == null ? '' : weather.main.temp_min - 273.15 |  number:'.2' }} °C</li>
+            <li>Abundancia de Nubes: {{weather == null ? '' : weather.clouds.all }} % </li>
+          </ul>        
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-   
   </mat-grid-list>
 </div>

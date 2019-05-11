@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CityService } from '../city.service';
+import { map } from 'rxjs/operators';
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 export interface City {
   id: number;
@@ -11,6 +14,10 @@ export interface City {
   styleUrls: ['./city-list.component.sass']
 })
 export class CityListComponent implements OnInit {
+
+constructor(private cityService: CityService) {
+
+ }
 
  cities: City[] = [
     {
@@ -59,12 +66,17 @@ export class CityListComponent implements OnInit {
     }
  ];
 
-constructor() {
+  @Output () getData = new EventEmitter();
+
+  ngOnInit() {
+  }
+
+  changeCity(city) {
+  this.cityService.getWeather(city.id).subscribe(
+    res => this.getData.emit(res) ,
+    err => console.log(err)
+  );
 
  }
-
-ngOnInit() {
-
-}
 
 }

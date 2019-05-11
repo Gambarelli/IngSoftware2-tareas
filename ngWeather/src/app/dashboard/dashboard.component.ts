@@ -1,3 +1,4 @@
+import { CityService } from '../city.service';
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
@@ -25,5 +26,12 @@ export class DashboardComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private cityService: CityService, private breakpointObserver: BreakpointObserver) {}
+
+  weather = null;
+  setData(weatherData) {
+    this.weather = weatherData;
+  }
+
 }
+
